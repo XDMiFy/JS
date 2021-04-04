@@ -1,0 +1,43 @@
+<html>
+	<head>
+	<script type="text/javascript" src="rd.js"></script>
+	<script>
+		var secret = randomDigits();
+		
+		function onButtonpress () {
+			var userInput = document.getElementById("user_input").value;
+			var cows = 0;
+			var bulls = 0;
+			
+			for (i = 0; i < 4; i++)
+			{
+				var currentNumber = userInput[i];
+				for (j = 0; j < 4; j++)
+				{
+					if (currentNumber == secret[j])
+					{	
+						if (i == j) {
+							bulls++
+						} else{
+						cows++
+						}
+					}
+				}
+			}
+			var h1Element = document.getElementById("results");
+			h1Element.innerHTML += "your number: " + userInput + ". cows: " + cows + ". bulls: " + bulls +"<br>";
+			if (bulls == 4){
+			alert("you win!")
+			}
+		}
+	</script>
+	</head>
+	<body>
+		<h1>Please, enter four digits,that are possibly correct</h1>
+		<h1 id="results"></h1>
+		<input type="text" id="user_input">
+		<br>
+		<button onclick="onButtonpress()">Try:D</button>
+	
+	</body>
+</html>
